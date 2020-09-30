@@ -1,0 +1,72 @@
+type User {
+  id: ID! @id
+  name: String! 
+  createdAt:DateTime! @createdAt
+  updatedAt:DateTime! @updatedAt
+  isDeleted:Boolean! @default(value:false)
+  
+}
+type Post {
+  id: ID! @id
+  createdAt:DateTime! @createdAt
+  updatedAt:DateTime! @updatedAt
+  isDeleted:Boolean! @default(value:false)
+  
+
+}
+type Comment{
+  id:ID! @id
+  createdAt:DateTime! @createdAt
+  updatedAt:DateTime! @updatedAt
+  isDeleted:Boolean! @default(value:false)
+  
+}
+type Room{
+  id: ID! @id
+  createdAt:DateTime! @createdAt
+  updatedAt:DateTime! @updatedAt
+  isDeleted:Boolean! @default(value:false)
+  
+}
+type Message{
+  id: ID! @id
+  createdAt:DateTime! @createdAt
+  updatedAt:DateTime! @updatedAt
+  isDeleted:Boolean! @default(value:false)
+  
+}
+type File{
+  id:ID! @id
+  createdAt:DateTime! @createdAt
+  updatedAt:DateTime! @updatedAt
+  isDeleted:Boolean! @default(value:false)
+  
+}
+type Like{
+  id:ID! @id
+  createdAt:DateTime! @createdAt
+  updatedAt:DateTime! @updatedAt
+  isDeleted:Boolean! @default(value:false)
+  
+}
+type Reservation{
+  id:ID! @id
+  createdAt:DateTime! @createdAt
+  updatedAt:DateTime! @updatedAt
+  isDeleted:Boolean! @default(value:false)
+  
+}
+type Review{
+  id:ID! @id
+  createdAt:DateTime! @createdAt
+  updatedAt:DateTime! @updatedAt
+  isDeleted:Boolean! @default(value:false)
+  
+}
+type Category{
+  id:ID! @id
+  createdAt:DateTime! @createdAt
+  updatedAt:DateTime! @updatedAt
+  isDeleted:Boolean! @default(value:false)
+  
+}
