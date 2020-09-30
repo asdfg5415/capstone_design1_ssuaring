@@ -1,0 +1,61 @@
+type User {
+  id: ID!
+  name: String!
+  createdAt: String!
+  updatedAt: String!
+  isDeleted: Boolean!
+}
+type Post {
+  id: ID!
+  createdAt: String!
+  updatedAt: String!
+  isDeleted: Boolean!
+}
+type Comment {
+  id: ID!
+  createdAt: String!
+  updatedAt: String!
+  isDeleted: Boolean!
+}
+type Room {
+  id: ID!
+  createdAt: String!
+  updatedAt: String!
+  isDeleted: Boolean!
+}
+type Message {
+  id: ID!
+  createdAt: String!
+  updatedAt: String!
+  isDeleted: Boolean!
+}
+type File {
+  id: ID!
+  createdAt: String!
+  updatedAt: String!
+  isDeleted: Boolean!
+}
+type Like {
+  id: ID!
+  createdAt: String!
+  updatedAt: String!
+  isDeleted: Boolean!
+}
+type Reservation {
+  id: ID!
+  createdAt: String!
+  updatedAt: String!
+  isDeleted: Boolean!
+}
+type Review {
+  id: ID!
+  createdAt: String!
+  updatedAt: String!
+  isDeleted: Boolean!
+}
+type Category {
+  id: ID!
+  createdAt: String!
+  updatedAt: String!
+  isDeleted: Boolean!
+}
