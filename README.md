@@ -17,4 +17,6 @@ this is our sharing app
 
 #### yarn 일 경우
 
-1.
+1. yarn: 패키지 설치
+2. yarn prisma: generated 파일 생성
+4. yarn dev: 서버 실행
