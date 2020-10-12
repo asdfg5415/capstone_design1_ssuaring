@@ -10,5 +10,5 @@ const typeDefs = mergeTypes(allTypes);
 const resolvers = mergeResolvers(allResolvers);
 const executableSchema = makeExecutableSchema({
     typeDefs,resolvers
-})
+});
 export default executableSchema;
