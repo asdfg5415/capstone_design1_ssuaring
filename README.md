@@ -6,6 +6,7 @@ this is our sharing app
 
 1. git clone https://github.com/rat8397/ssuaring
 2. prisma.yml 파일 넣기
+3. .env 파일 넣기
 
 ### 2. Run
 
