@@ -1,6 +1,23 @@
 type User {
   id: ID! @id
-  name: String! 
+  name: String!
+  nickname:String!
+  phoneNumber:String!
+  area :String!
+  avatar:String @default(value:"https://www.i-boss.co.kr/template/DESIGN_shared/program/theme/01/THUMBNAIL_60_60_icon_rep_box.gif")
+  email:String! @unique
+  areaAuth:Boolean!
+  viewPostHistory:[Post!]!
+  searchHistory:[String!]!
+  penalty:Int! @default(value:100)
+  rooms:[Room!]!
+
+
+  posts:[Post!]! @relation(name:"PostOfUser" onDelete:CASCADE)
+  likes:[Like!]! @relation(name:"LikeOfUser" onDelete:CASCADE)
+  tradeHistory:[Reservation]! @relation(name:"ReservationOfUser" onDelete:CASCADE)
+  reviews : [Review!]! @relation(name:"ReviewOfUser" onDelete:CASCADE)
+
   createdAt:DateTime! @createdAt
   updatedAt:DateTime! @updatedAt
   isDeleted:Boolean! @default(value:false)
@@ -8,21 +25,29 @@ type User {
 }
 type Post {
   id: ID! @id
+  area:String!
+  title:String!
+  caption:String!
+  price:String!
+  user:User! @relation(name:"PostOfUser")
+  files:[File!]!  @relation(name:"FileOfPost" onDelete:CASCADE)
+  likes:[Like!]!  @relation(name:"LikeOfPost" onDelete:CASCADE)
+  reservations :[Reservation!]! @relation(name:"ReservationOfPost" onDelete:CASCADE)
+
+
   createdAt:DateTime! @createdAt
   updatedAt:DateTime! @updatedAt
   isDeleted:Boolean! @default(value:false)
-  
 
 }
-type Comment{
-  id:ID! @id
-  createdAt:DateTime! @createdAt
-  updatedAt:DateTime! @updatedAt
-  isDeleted:Boolean! @default(value:false)
-  
-}
+
 type Room{
   id: ID! @id
+  participants:[User!]! 
+  messages:[Message!]! @relation(name:"MessageOfRoom" onDelete:CASCADE)
+  reservation: Reservation! @relation(name:"ReservationOfRoom" onDelete:CASCADE)
+  
+
   createdAt:DateTime! @createdAt
   updatedAt:DateTime! @updatedAt
   isDeleted:Boolean! @default(value:false)
@@ -30,13 +55,25 @@ type Room{
 }
 type Message{
   id: ID! @id
+  text:String!
+  from:User! @relation(name:"From")
+  to:User! @relation(name:"To")
+  room:Room! @relation(name:"MessageOfRoom")
+  file:[File!]! @relation(name:"FileOfMessage" onDelete:CASCADE)
+
   createdAt:DateTime! @createdAt
   updatedAt:DateTime! @updatedAt
   isDeleted:Boolean! @default(value:false)
   
 }
 type File{
+
   id:ID! @id
+  url:String!
+  post :Post @relation(name:"FileOfPost")
+  review: Review @relation(name:"FileOfReview")
+  message:Message @relation(name:"FileOfMessage")
+  
   createdAt:DateTime! @createdAt
   updatedAt:DateTime! @updatedAt
   isDeleted:Boolean! @default(value:false)
@@ -44,6 +81,9 @@ type File{
 }
 type Like{
   id:ID! @id
+  user:User! @relation(name:"LikeOfUser")
+  post:Post! @relation(name:"LikeOfPost")
+
   createdAt:DateTime! @createdAt
   updatedAt:DateTime! @updatedAt
   isDeleted:Boolean! @default(value:false)
@@ -51,6 +91,14 @@ type Like{
 }
 type Reservation{
   id:ID! @id
+  post :Post! @relation(name:"ReservationOfPost")
+  borrower : User! @relation(name:"ReservationOfUser")
+  room : Room! @relation(name:"ReservationOfRoom")
+  review: Review! @relation(name:"ReservationOfReview")
+  status: String!
+  startDate:DateTime!
+  endDate:DateTime!
+  
   createdAt:DateTime! @createdAt
   updatedAt:DateTime! @updatedAt
   isDeleted:Boolean! @default(value:false)
@@ -58,6 +106,12 @@ type Reservation{
 }
 type Review{
   id:ID! @id
+  text :String!
+  reservation:Reservation! @relation(name:"ReservationOfReview" onDelete:CASCADE)
+  borrower:User! @relation(name:"ReviewOfUser")
+  files: [File!]! @relation(name:"FileOfReview" onDelete:CASCADE)
+  star : Int!
+
   createdAt:DateTime! @createdAt
   updatedAt:DateTime! @updatedAt
   isDeleted:Boolean! @default(value:false)
@@ -65,6 +119,7 @@ type Review{
 }
 type Category{
   id:ID! @id
+  
   createdAt:DateTime! @createdAt
   updatedAt:DateTime! @updatedAt
   isDeleted:Boolean! @default(value:false)
