@@ -15,6 +15,7 @@ export default {
         firstName,
         lastName,
         bio,
+        phoneNumber
       });
       if (user !== undefined) {
         return true;
