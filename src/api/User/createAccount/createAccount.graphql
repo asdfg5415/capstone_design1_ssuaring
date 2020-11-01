@@ -1,6 +1,0 @@
-type Mutation{
-    createAccount(
-        name:String!
-
-    ):Boolean!
-}
