@@ -1,27 +1,25 @@
 type User {
-  id: ID! @id
-  name: String!
-  nickname:String!
-  phoneNumber:String! @unique
-  area :String!
-  avatar:String
-  email:String! @unique
-  areaAuth:Boolean!
-  searchHistory:[String!]! @scalarList(strategy: RELATION)
-  penalty:Int! @default(value:100)
-  rooms:[Room!]! 
-  loginSecret:String!
-  
-  posts:[Post!]! @relation(name:"PostOfUser" onDelete:CASCADE) 
-  likes:[Like!]! @relation(name:"LikeOfUser" onDelete:CASCADE)
-  tradeHistory:[Reservation]! @relation(name:"ReservationOfUser" onDelete:CASCADE)
-  reviews : [Review!]! @relation(name:"ReviewOfUser" onDelete:CASCADE)
-
-  createdAt:DateTime! @createdAt
-  updatedAt:DateTime! @updatedAt
-  isDeleted:Boolean! @default(value:false)
-  
+  id: ID!                       @id
+  name: String!                 @default(value: "temp")
+  nickname: String!             @default(value: "-")
+  phoneNumber: String!          @unique
+  loginSecret: String           @default(value: "")
+  area: String!                 @default(value: "-")
+  avatar: String                @default(value: "https://www.i-boss.co.kr/template/DESIGN_shared/program/theme/01/THUMBNAIL_60_60_icon_rep_box.gif")
+  email: String!                @default(value: "-")
+  areaAuth: Boolean!            @default(value: false)
+  searchHistory: [String!]!     @scalarList(strategy: RELATION)
+  penalty: Int!                 @default(value: 100)
+  rooms: [Room!]!
+  posts: [Post!]!               @relation(name: "PostOfUser" onDelete: CASCADE) 
+  likes: [Like!]!               @relation(name: "LikeOfUser" onDelete: CASCADE)
+  tradeHistory: [Reservation]!  @relation(name: "ReservationOfUser" onDelete: CASCADE)
+  reviews: [Review!]!           @relation(name: "ReviewOfUser" onDelete: CASCADE)
+  createdAt: DateTime!          @createdAt
+  updatedAt: DateTime!          @updatedAt
+  isDeleted: Boolean!           @default(value: false)  
 }
+
 type Post {
   id: ID! @id
   area:String!
