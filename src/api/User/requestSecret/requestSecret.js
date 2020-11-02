@@ -12,12 +12,6 @@ export default {
         if (!exists) {
           await prisma.createUser({
             phoneNumber,
-            name: 'temp',
-            nickname: 'temp',
-            area: 'temp',
-            areaAuth: false,
-            email: 'temp',
-            loginSecret: '',
           });
         }
         await prisma.updateUser({
