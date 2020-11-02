@@ -9,7 +9,9 @@ export default {
       console.log('[requestSecret]', phoneNumber, loginSecret);
       try {
         const exists = await prisma.$exists.user({ phoneNumber });
+        // 회원가입된 전화번호가 아닐 경우 User 생성
         if (!exists) {
+          console.log('user created');
           await prisma.createUser({
             phoneNumber,
           });

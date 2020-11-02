@@ -14,7 +14,9 @@ export default {
           where: { id: user.id },
           data: { loginSecret: '' },
         });
+
         if (user.name === 'temp') {
+          // 회원 정보가 없을 경우 'SignUp' 반환
           return 'SignUp';
         } else {
           return generateToken(user.id);
