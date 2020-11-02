@@ -8,12 +8,17 @@ export default {
       console.log('[confirmSecret]', args);
 
       const user = await prisma.user({ phoneNumber });
+      console.log(user);
       if (user.loginSecret === secret) {
         await prisma.updateUser({
           where: { id: user.id },
           data: { loginSecret: '' },
         });
-        return generateToken(user.id);
+        if (user.name === 'temp') {
+          return 'SignUp';
+        } else {
+          return generateToken(user.id);
+        }
       } else {
         throw Error('Wrong phoneNumber/secret combination');
       }

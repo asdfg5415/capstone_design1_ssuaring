@@ -8,11 +8,23 @@ export default {
       const loginSecret = generateSecret();
       console.log('[requestSecret]', phoneNumber, loginSecret);
       try {
-        await sendSecretSMS(phoneNumber, loginSecret);
+        const exists = await prisma.$exists.user({ phoneNumber });
+        if (!exists) {
+          await prisma.createUser({
+            phoneNumber,
+            name: 'temp',
+            nickname: 'temp',
+            area: 'temp',
+            areaAuth: false,
+            email: 'temp',
+            loginSecret: '',
+          });
+        }
         await prisma.updateUser({
           data: { loginSecret },
           where: { phoneNumber },
         });
+        // await sendSecretSMS(phoneNumber, loginSecret);
         return true;
       } catch (error) {
         console.log(error);
