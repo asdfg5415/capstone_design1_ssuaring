@@ -1,3 +1,4 @@
+
 import { prisma } from "../../../../generated/prisma-client";
 export default {
   Mutation: {
@@ -15,6 +16,7 @@ export default {
         firstName,
         lastName,
         bio,
+        phoneNumber
       });
       if (user !== undefined) {
         return true;
