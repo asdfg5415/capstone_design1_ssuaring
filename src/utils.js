@@ -20,7 +20,10 @@ export const sendSecretSMS = async (phoneNumber, loginSecret) => {
 };
 
 export const generateSecret = () => {
-  const randomNumber = Math.floor(Math.random() * 1000000);
+  let randomNumber = Math.floor(Math.random() * 1000000) + 100000;
+  if (randomNumber > 1000000) {
+    randomNumber -= 100000;
+  }
   return `${randomNumber}`;
 };
 
