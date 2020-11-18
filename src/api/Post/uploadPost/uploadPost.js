@@ -5,11 +5,13 @@ export default {
     uploadPost: async (_, args, { request, isAuthenticated }) => {
       isAuthenticated(request);
       const { user } = request;
-      const { caption, location, files } = args;
-      console.log('uploadPost', args, user.email);
+      const { area, title, caption, price, files } = args;
+      console.log('uploadPost', args, user.phoneNumber);
       const post = await prisma.createPost({
+        area,
+        title,
         caption,
-        location,
+        price,
         user: { connect: { id: user.id } },
       });
       files.forEach(
