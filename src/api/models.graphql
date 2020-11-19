@@ -1,10 +1,24 @@
 type User {
-  id: ID!
-  name: String!
-  loginSecret: String
-  createdAt: String!
-  updatedAt: String!
+  id: ID!                     
+  name: String!                 
+  nickname: String!           
+  phoneNumber: String!         
+  loginSecret: String         
+  area: String!                
+  avatar: String                
+  email: String!               
+  areaAuth: Boolean!            
+  searchHistory: [String!]!    
+  penalty: Int!                
+  rooms: [Room!]!
+  posts: [Post!]!               
+  likes: [Like!]!              
+  tradeHistory: [Reservation]!  
+  reviews: [Review!]!           
+  createdAt: String!          
+  updatedAt: String!          
   isDeleted: Boolean!
+  postsCount:Int!           
 }
 type Post {
   id: ID!
