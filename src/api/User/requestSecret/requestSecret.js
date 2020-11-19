@@ -8,11 +8,19 @@ export default {
       const loginSecret = generateSecret();
       console.log('[requestSecret]', phoneNumber, loginSecret);
       try {
-        await sendSecretSMS(phoneNumber, loginSecret);
+        const exists = await prisma.$exists.user({ phoneNumber });
+        // 회원가입된 전화번호가 아닐 경우 User 생성
+        if (!exists) {
+          console.log('user created');
+          await prisma.createUser({
+            phoneNumber,
+          });
+        }
         await prisma.updateUser({
           data: { loginSecret },
           where: { phoneNumber },
         });
+        // await sendSecretSMS(phoneNumber, loginSecret);
         return true;
       } catch (error) {
         console.log(error);

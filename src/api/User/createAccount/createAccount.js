@@ -1,25 +1,20 @@
-
-import { prisma } from "../../../../generated/prisma-client";
+import { prisma } from '../../../../generated/prisma-client';
+import { generateToken } from '../../../utils';
 export default {
   Mutation: {
     createAccount: async (_, args) => {
-      const { username, email, firstName = "", lastName = "", bio = "" } = args;
-      const exists = await prisma.$exists.user({ username });
-      const exists_email = await prisma.$exists.user({ email });
+      const { name, nickname, phoneNumber, area, email } = args;
 
-      if (exists | exists_email) {
-        throw Error("이 유저는 이미 존재합니다");
-      }
-      const user = await prisma.createUser({
-        username,
-        email,
-        firstName,
-        lastName,
-        bio,
-        phoneNumber
+      const user = await prisma.updateUser({
+        where: { phoneNumber },
+        data: { name, nickname, phoneNumber, area, email },
       });
+
+      console.log(user);
+
       if (user !== undefined) {
-        return true;
+        // 회원가입을 성공했을 경우 식별 토큰 반환
+        return generateToken(user.id);
       } else {
         return false;
       }

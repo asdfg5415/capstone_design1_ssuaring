@@ -9,7 +9,7 @@ export const sendSecretSMS = async (phoneNumber, loginSecret) => {
     phoneNumber: process.env.SENS_FROM,
   });
 
-  const content = `[SSUARING] 인증번호[${loginSecret}]를 입력해주세요.`;
+  const content = `[SSUARING] 인증번호 [${loginSecret}]를 입력해주세요.`;
   const { success, msg, status } = await ncp.sendSMS({
     to: phoneNumber,
     content,
