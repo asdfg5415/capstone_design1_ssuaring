@@ -1,27 +1,37 @@
 type User {
-  id: ID!                     
-  name: String!                 
-  nickname: String!           
-  phoneNumber: String!         
-  loginSecret: String         
-  area: String!                
-  avatar: String                
-  email: String!               
-  areaAuth: Boolean!            
-  searchHistory: [String!]!    
-  penalty: Int!                
+  id: ID!
+  name: String!
+  nickname: String!
+  phoneNumber: String!
+  loginSecret: String
+  area: String!
+  avatar: String
+  email: String!
+  areaAuth: Boolean!
+  searchHistory: [String!]!
+  penalty: Int!
   rooms: [Room!]!
-  posts: [Post!]!               
-  likes: [Like!]!              
-  tradeHistory: [Reservation]!  
-  reviews: [Review!]!           
-  createdAt: String!          
-  updatedAt: String!          
+  posts: [Post!]!
+  likes: [Like!]!
+  tradeHistory: [Reservation]!
+  reviews: [Review!]!
+  createdAt: String!
+  updatedAt: String!
   isDeleted: Boolean!
-  postsCount:Int!           
+  postsCount: Int!
+  likesCount: Int!
 }
 type Post {
   id: ID!
+  area: String!
+  title: String!
+  caption: String!
+  price: String!
+  user: User!
+  files: [File!]!
+  likes: [Like!]!
+  reservations: [Reservation!]!
+
   createdAt: String!
   updatedAt: String!
   isDeleted: Boolean!
@@ -46,6 +56,8 @@ type Message {
 }
 type File {
   id: ID!
+  url: String!
+
   createdAt: String!
   updatedAt: String!
   isDeleted: Boolean!
