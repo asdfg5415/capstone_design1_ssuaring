@@ -10,30 +10,30 @@ export default {
           },
         },
       }),
-    likes:(parent) =>
-    prisma.likes({
-      where: {
-        user: {
-          id: parent.id,
+    likes: (parent) =>
+      prisma.likes({
+        where: {
+          user: {
+            id: parent.id,
+          },
         },
-      },
-    }),
-    tradeHistory:(parent) =>
-    prisma.reservations({
-      where: {
-        user: {
-          id: parent.id,
+      }),
+    tradeHistory: (parent) =>
+      prisma.reservations({
+        where: {
+          user: {
+            id: parent.id,
+          },
         },
-      },
-    }),
-    reviews:(parent) =>
-    prisma.reviews({
-      where: {
-        user: {
-          id: parent.id,
+      }),
+    reviews: (parent) =>
+      prisma.reviews({
+        where: {
+          user: {
+            id: parent.id,
+          },
         },
-      },
-    }),
+      }),
     postsCount: (parent) => {
       const posts = prisma
         .postsConnection({
