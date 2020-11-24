@@ -10,21 +10,32 @@ type User {
   areaAuth: Boolean!
   searchHistory: [String!]!
   penalty: Int!
-  rooms: [Room!]
+  rooms: [Room!]!
   posts: [Post!]!
   likes: [Like!]!
   tradeHistory: [Reservation]!
   reviews: [Review!]!
-  createdAt: String
-  updatedAt: String
+  createdAt: String!
+  updatedAt: String!
   isDeleted: Boolean!
+
   # computed fields
   isSelf: Boolean!
   postsCount: Int!
+  likesCount: Int!
 }
 
 type Post {
   id: ID!
+  area: String!
+  title: String!
+  caption: String!
+  price: String!
+  user: User!
+  files: [File!]!
+  likes: [Like!]!
+  reservations: [Reservation!]!
+
   createdAt: String!
   updatedAt: String!
   isDeleted: Boolean!
@@ -37,18 +48,28 @@ type Comment {
 }
 type Room {
   id: ID!
+  participants: [User!]!
+  messages: [Message!]!
+  reservation: [Reservation!]
   createdAt: String!
   updatedAt: String!
   isDeleted: Boolean!
 }
 type Message {
   id: ID!
+  text: String!
+  from: User!
+  to: User!
+  room: Room!
+  file: [File!]
   createdAt: String!
   updatedAt: String!
   isDeleted: Boolean!
 }
 type File {
   id: ID!
+  url: String!
+
   createdAt: String!
   updatedAt: String!
   isDeleted: Boolean!
