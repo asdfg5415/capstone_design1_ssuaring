@@ -44,12 +44,20 @@ type Comment {
 }
 type Room {
   id: ID!
+  participants: [User!]!
+  messages: [Message!]!
+  reservation: [Reservation!]
   createdAt: String!
   updatedAt: String!
   isDeleted: Boolean!
 }
 type Message {
   id: ID!
+  text: String!
+  from: User!
+  to: User!
+  room: Room!
+  file: [File!]
   createdAt: String!
   updatedAt: String!
   isDeleted: Boolean!
