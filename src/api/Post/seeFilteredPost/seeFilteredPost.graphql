@@ -1,0 +1,3 @@
+type Query {
+  seeFilteredPost(category: Int!): [Post!]!
+}
