@@ -37,85 +37,73 @@ type Post {
   isDeleted: Boolean!           @default(value:false)
 }
 
-type Room{
-  id: ID! @id
+type Room {
+  id: ID!                       @id
   participants:[User!]! 
   messages:[Message!]!
-  reservation: [Reservation!] @relation(name:"ReservationOfRoom" onDelete:CASCADE)
-  createdAt:DateTime! @createdAt
-  updatedAt:DateTime! @updatedAt
-  isDeleted:Boolean! @default(value:false)
-  
+  reservation: [Reservation!]   @relation(name:"ReservationOfRoom" onDelete:CASCADE)
+  createdAt:DateTime!           @createdAt
+  updatedAt:DateTime!           @updatedAt
+  isDeleted:Boolean!            @default(value:false)
 }
-type Message{
-  id: ID! @id
-  text:String!
-  from:User! @relation(name:"From")
-  to:User! @relation(name:"To")
-  room:Room!
-  file:[File!] @relation(name:"FileOfMessage" onDelete:CASCADE)
 
-  createdAt:DateTime! @createdAt
-  updatedAt:DateTime! @updatedAt
-  isDeleted:Boolean! @default(value:false)
-  
+type Message{
+  id: ID!                       @id
+  text:String!
+  from:User!                    @relation(name:"From")
+  to:User!                      @relation(name:"To")
+  room:Room!
+  file:[File!]                  @relation(name:"FileOfMessage" onDelete:CASCADE)
+  createdAt:DateTime!           @createdAt
+  updatedAt:DateTime!           @updatedAt
+  isDeleted:Boolean!            @default(value:false)
 }
+
 type File{
 
-  id:ID! @id
+  id:ID!                      @id
   url:String!
-  post :Post @relation(name:"FileOfPost")
-  review: Review @relation(name:"FileOfReview")
-  message:Message @relation(name:"FileOfMessage")
-  
-  createdAt:DateTime! @createdAt
-  updatedAt:DateTime! @updatedAt
-  isDeleted:Boolean! @default(value:false)
-  
-}
+  post :Post                  @relation(name:"FileOfPost")
+  review: Review              @relation(name:"FileOfReview")
+  message:Message             @relation(name:"FileOfMessage")
+  createdAt:DateTime!         @createdAt
+  updatedAt:DateTime!         @updatedAt
+  isDeleted:Boolean!          @default(value:false)
+  }
 type Like{
-  id:ID! @id
-  user:User! @relation(name:"LikeOfUser")
-  post:Post! @relation(name:"LikeOfPost")
-
-  createdAt:DateTime! @createdAt
-  updatedAt:DateTime! @updatedAt
-  isDeleted:Boolean! @default(value:false)
+  id:ID!                      @id
+  user:User!                  @relation(name:"LikeOfUser")
+  post:Post!                  @relation(name:"LikeOfPost")
+  createdAt:DateTime!         @createdAt
+  updatedAt:DateTime!         @updatedAt
+  isDeleted:Boolean!          @default(value:false)
   
 }
+
 type Reservation{
-  id:ID! @id
-  post :Post! @relation(name:"ReservationOfPost")
-  borrower : User! @relation(name:"ReservationOfUser")
-  room : Room! @relation(name:"ReservationOfRoom")
-  review: [Review!]! @relation(name:"ReservationOfReview")
+  id:ID!                      @id
+  post :Post!                 @relation(name:"ReservationOfPost")
+  borrower : User!            @relation(name:"ReservationOfUser")
+  room : Room!                @relation(name:"ReservationOfRoom")
+  review: [Review!]!          @relation(name:"ReservationOfReview")
   status: String!
   startDate:DateTime!
   endDate:DateTime!
-  
-  createdAt:DateTime! @createdAt
-  updatedAt:DateTime! @updatedAt
-  isDeleted:Boolean! @default(value:false)
+  createdAt:DateTime!                       @createdAt
+  updatedAt:DateTime!                       @updatedAt
+  isDeleted:Boolean!                      @default(value:false)
   
 }
+
 type Review{
-  id:ID! @id
+  id:ID!                      @id
   text :String!
-  reservation:Reservation! @relation(name:"ReservationOfReview" onDelete:CASCADE)
-  borrower:User! @relation(name:"ReviewOfUser")
-  files: [File!]! @relation(name:"FileOfReview" onDelete:CASCADE)
+  reservation:Reservation!                      @relation(name:"ReservationOfReview" onDelete:CASCADE)
+  borrower:User!                      @relation(name:"ReviewOfUser")
+  files: [File!]!                       @relation(name:"FileOfReview" onDelete:CASCADE)
   star : Int!
 
-  createdAt:DateTime! @createdAt
-  updatedAt:DateTime! @updatedAt
-  isDeleted:Boolean! @default(value:false)
-  
-}
-type Category{
-  id:ID! @id
-  
-  createdAt:DateTime! @createdAt
-  updatedAt:DateTime! @updatedAt
-  isDeleted:Boolean! @default(value:false)
-  
+  createdAt:DateTime!                       @createdAt
+  updatedAt:DateTime!                       @updatedAt
+  isDeleted:Boolean!                      @default(value:false) 
 }
