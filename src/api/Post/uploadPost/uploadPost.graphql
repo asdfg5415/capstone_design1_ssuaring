@@ -4,6 +4,8 @@ type Mutation {
     title: String!
     caption: String!
     price: String!
+    period: Int!
+    category: Int!
     files: [String!]!
   ): Post!
 }
