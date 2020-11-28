@@ -1,3 +1,4 @@
+import { ReplaceFieldWithFragment } from "graphql-tools";
 import { prisma } from "../../../generated/prisma-client";
 
 export default {
@@ -29,7 +30,7 @@ export default {
     reviews: (parent) =>
       prisma.reviews({
         where: {
-          user: {
+          borrower: {
             id: parent.id,
           },
         },
@@ -51,5 +52,6 @@ export default {
     likesCount: (parent) => {
       return 1;
     },
+    
   },
 };
