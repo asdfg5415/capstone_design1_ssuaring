@@ -87,8 +87,7 @@ type Reservation{
   id:ID! @id
   post :Post! @relation(name:"ReservationOfPost")
   borrower : User! @relation(name:"ReservationOfUser")
-  room : Room! @relation(name:"ReservationOfRoom")
-  review: [Review!]! @relation(name:"ReservationOfReview")
+  review: [Review!] @relation(name:"ReservationOfReview")
   status: String!
   startDate:DateTime!
   endDate:DateTime!
@@ -106,14 +105,6 @@ type Review{
   files: [File!]! @relation(name:"FileOfReview" onDelete:CASCADE)
   star : Int!
 
-  createdAt:DateTime! @createdAt
-  updatedAt:DateTime! @updatedAt
-  isDeleted:Boolean! @default(value:false)
-  
-}
-type Category{
-  id:ID! @id
-  
   createdAt:DateTime! @createdAt
   updatedAt:DateTime! @updatedAt
   isDeleted:Boolean! @default(value:false)

@@ -12,6 +12,8 @@ export default {
         title,
         caption,
         price,
+        category : 1,
+        period : 7,
         user: { connect: { id: user.id } },
       });
       files.forEach(

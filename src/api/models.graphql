@@ -82,6 +82,8 @@ type Like {
 }
 type Reservation {
   id: ID!
+  post: Post!
+  borrower: User!
   createdAt: String!
   updatedAt: String!
   isDeleted: Boolean!
