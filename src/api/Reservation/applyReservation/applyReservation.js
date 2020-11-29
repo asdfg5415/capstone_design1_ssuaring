@@ -2,7 +2,7 @@ import { prisma } from "../../../../generated/prisma-client";
 
 export default {
   Mutation: {
-    createReservation: async (_, args, { request, isAuthenticated }) => {
+    applyReservation: async (_, args, { request, isAuthenticated }) => {
       // 1. 인증하고
       isAuthenticated(request);
 

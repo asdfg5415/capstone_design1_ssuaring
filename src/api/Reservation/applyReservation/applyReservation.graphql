@@ -1,5 +1,5 @@
 type Mutation {
-  createReservation(
+  applyReservation(
     postId: String!,
     startDate: String!,
     endDate: String!
