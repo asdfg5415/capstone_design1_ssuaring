@@ -102,3 +102,14 @@ type Category {
   updatedAt: String!
   isDeleted: Boolean!
 }
+type Complain {
+  id: ID!
+  post: Post!
+  text: String!
+  complainant: User!
+  files: [File!]
+
+  createdAt: String!
+  updatedAt: String!
+  isDeleted: Boolean!
+}

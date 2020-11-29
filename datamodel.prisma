@@ -110,3 +110,14 @@ type Review{
   isDeleted:Boolean! @default(value:false)
   
 }
+type Complain{
+  id:ID! @id
+  post :Post! @relation(name:"PostOfComplain")
+  text :String!
+  complainant:User! @relation(name:"UserOfComplain")
+  files: [File!] @relation(name:"FileOfComplain" onDelete:CASCADE)
+
+  createdAt:DateTime! @createdAt
+  updatedAt:DateTime! @updatedAt
+  isDeleted:Boolean! @default(value:false)
+}
