@@ -84,6 +84,8 @@ type Reservation {
   id: ID!
   post: Post!
   borrower: User!
+  startDate: String!
+  endDate: String!
   createdAt: String!
   updatedAt: String!
   isDeleted: Boolean!
