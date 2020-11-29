@@ -1,15 +1,8 @@
-import { prisma } from '../../../generated/prisma-client';
+import { prisma } from "../../../generated/prisma-client";
 
 export default {
   Post: {
-    files: parent => {
-      return prisma.files({
-        where: {
-          post: {
-            id: parent.id,
-          },
-        },
-      });
-    },
+    files: ({ id }) => prisma.post({ id }).files(),
+    user: ({ id }) => prisma.post({ id }).user(),
   },
 };
