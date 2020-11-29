@@ -1,0 +1,4 @@
+type Query {
+    # id는 postId이다.
+  readPostComplain(id: String!): [Complain!]
+}
