@@ -107,7 +107,6 @@ type Complain {
   post: Post!
   text: String!
   complainant: User!
-  files: [File!]
 
   createdAt: String!
   updatedAt: String!
