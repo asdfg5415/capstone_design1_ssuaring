@@ -1,0 +1,5 @@
+type Query {
+    # 게시글의 모든 리뷰를 다 가져온다. 없을 수도 있당!근!
+    # id는 postId이다.
+  readPostReview(id: String!): [Review!]
+}
