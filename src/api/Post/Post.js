@@ -4,5 +4,6 @@ export default {
   Post: {
     files: ({ id }) => prisma.post({ id }).files(),
     user: ({ id }) => prisma.post({ id }).user(),
+    reservations: ({ id }) => prisma.post({ id }).reservations(),
   },
 };
