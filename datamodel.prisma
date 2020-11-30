@@ -87,8 +87,7 @@ type Reservation{
   id:ID! @id
   post :Post! @relation(name:"ReservationOfPost")
   borrower : User! @relation(name:"ReservationOfUser")
-  room : Room! @relation(name:"ReservationOfRoom")
-  review: [Review!]! @relation(name:"ReservationOfReview")
+  review: [Review!] @relation(name:"ReservationOfReview")
   status: String!
   startDate:DateTime!
   endDate:DateTime!
@@ -101,9 +100,8 @@ type Reservation{
 type Review{
   id:ID! @id
   text :String!
-  reservation:Reservation! @relation(name:"ReservationOfReview" onDelete:CASCADE)
   borrower:User! @relation(name:"ReviewOfUser")
-  files: [File!]! @relation(name:"FileOfReview" onDelete:CASCADE)
+  reservation:Reservation! @relation(name:"ReservationOfReview" onDelete:CASCADE)
   star : Int!
 
   createdAt:DateTime! @createdAt
@@ -111,11 +109,13 @@ type Review{
   isDeleted:Boolean! @default(value:false)
   
 }
-type Category{
+type Complain{
   id:ID! @id
-  
+  post :Post! @relation(name:"PostOfComplain")
+  text :String!
+  complainant:User! @relation(name:"UserOfComplain")
+
   createdAt:DateTime! @createdAt
   updatedAt:DateTime! @updatedAt
   isDeleted:Boolean! @default(value:false)
-  
 }

@@ -1,0 +1,9 @@
+type Mutation {
+  createReview(
+    # id는 Reservation의 Id
+    # 리뷰 작성 기능
+    reservationId: String!
+    text: String!
+    star: Int!
+  ): Review!
+}
