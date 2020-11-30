@@ -23,6 +23,7 @@ type User {
   isSelf: Boolean!
   postsCount: Int!
   likesCount: Int!
+  likesPosts: [Like!]!
 }
 
 type Post {
@@ -31,6 +32,7 @@ type Post {
   title: String!
   caption: String!
   price: String!
+  period: Int!
   user: User!
   files: [File!]!
   likes: [Like!]!
@@ -76,21 +78,30 @@ type File {
 }
 type Like {
   id: ID!
+  user: User!
+  post: Post!
   createdAt: String!
   updatedAt: String!
   isDeleted: Boolean!
 }
 type Reservation {
   id: ID!
+
   createdAt: String!
   updatedAt: String!
   isDeleted: Boolean!
 }
 type Review {
   id: ID!
+  text: String!
+  reservation: Reservation!
+  borrower: User!
+  files: [File!]!
+  star: Int!
+
   createdAt: String!
   updatedAt: String!
-  isDeleted: Boolean!
+  isDeleted:Boolean!
 }
 type Category {
   id: ID!

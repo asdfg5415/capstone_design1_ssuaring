@@ -5,7 +5,14 @@ export default {
     me: async (_, __, { request, isAuthenticated }) => {
       isAuthenticated(request);
       const { user } = request;
-      return await prisma.user({ id: user.id });
+      
+      try {
+        const returnUser = await prisma.user({ id: user.id });
+        return returnUser;
+      } catch (error) {
+        console.log("에러발생!");
+        console.log(error);
+      }
     },
   },
 };
