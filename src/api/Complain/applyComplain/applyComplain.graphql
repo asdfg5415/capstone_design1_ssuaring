@@ -1,0 +1,6 @@
+type Mutation {
+  applyComplain(
+    postId: String!
+    text: String!
+  ): Complain!
+}

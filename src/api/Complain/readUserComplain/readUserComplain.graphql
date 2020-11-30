@@ -1,0 +1,6 @@
+type Query {
+    # id는 userId이다.
+    # 어떤 유저가 받은 모든 신고를 리턴
+    # 와 여기다가 주석 쓰면 플레이그라운드에서 설명 나옴 신기방기
+  readUserComplain(id: String!): [Complain!]
+}

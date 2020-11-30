@@ -81,11 +81,10 @@ type Like{
 }
 
 type Reservation{
-  id:ID!                      @id
-  post :Post!                 @relation(name:"ReservationOfPost")
-  borrower : User!            @relation(name:"ReservationOfUser")
-  room : Room!                @relation(name:"ReservationOfRoom")
-  review: [Review!]!          @relation(name:"ReservationOfReview")
+  id:ID! @id
+  post :Post! @relation(name:"ReservationOfPost")
+  borrower : User! @relation(name:"ReservationOfUser")
+  review: [Review!] @relation(name:"ReservationOfReview")
   status: String!
   startDate:DateTime!
   endDate:DateTime!
@@ -98,12 +97,22 @@ type Reservation{
 type Review{
   id:ID!                      @id
   text :String!
-  reservation:Reservation!                      @relation(name:"ReservationOfReview" onDelete:CASCADE)
-  borrower:User!                      @relation(name:"ReviewOfUser")
-  files: [File!]!                       @relation(name:"FileOfReview" onDelete:CASCADE)
+  borrower:User! @relation(name:"ReviewOfUser")
+  reservation:Reservation! @relation(name:"ReservationOfReview" onDelete:CASCADE)
   star : Int!
 
-  createdAt:DateTime!                       @createdAt
-  updatedAt:DateTime!                       @updatedAt
-  isDeleted:Boolean!                      @default(value:false) 
+  createdAt:DateTime! @createdAt
+  updatedAt:DateTime! @updatedAt
+  isDeleted:Boolean! @default(value:false)
+  
+}
+type Complain{
+  id:ID! @id
+  post :Post! @relation(name:"PostOfComplain")
+  text :String!
+  complainant:User! @relation(name:"UserOfComplain")
+
+  createdAt:DateTime! @createdAt
+  updatedAt:DateTime! @updatedAt
+  isDeleted:Boolean! @default(value:false)
 }
