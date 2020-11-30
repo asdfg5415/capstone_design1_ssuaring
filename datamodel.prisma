@@ -100,9 +100,8 @@ type Reservation{
 type Review{
   id:ID! @id
   text :String!
-  reservation:Reservation! @relation(name:"ReservationOfReview" onDelete:CASCADE)
   borrower:User! @relation(name:"ReviewOfUser")
-  files: [File!]! @relation(name:"FileOfReview" onDelete:CASCADE)
+  reservation:Reservation! @relation(name:"ReservationOfReview" onDelete:CASCADE)
   star : Int!
 
   createdAt:DateTime! @createdAt

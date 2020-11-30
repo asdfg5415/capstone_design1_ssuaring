@@ -93,10 +93,9 @@ type Reservation {
 type Review {
   id: ID!
   text: String!
-  reservation: Reservation!
   borrower: User!
-  files: [File!]
-  starPoint: Int!
+  reservation: Reservation!
+  star: Int!
 }
 type Category {
   id: ID!
