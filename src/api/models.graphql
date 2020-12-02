@@ -33,14 +33,19 @@ type Post {
   caption: String!
   price: String!
   period: Int!
+  category: Int!
   user: User!
   files: [File!]!
   likes: [Like!]
   reservations: [Reservation!]
-
   createdAt: String!
   updatedAt: String!
   isDeleted: Boolean!
+
+  isMine: Boolean!
+  isLiked: Boolean!
+  likeCount: Int!
+  reservationCount: Int!
 }
 type Comment {
   id: ID!
@@ -88,6 +93,7 @@ type Reservation {
   id: ID!
   post: Post!
   borrower: User!
+  review: [Review!]!
   startDate: String!
   endDate: String!
   createdAt: String!
@@ -100,12 +106,13 @@ type Review {
   borrower: User!
   reservation: Reservation!
   star: Int!
+  updatedAt: String!
 }
 type Category {
   id: ID!
   createdAt: String!
   updatedAt: String!
-  isDeleted:Boolean!
+  isDeleted: Boolean!
 }
 type Complain {
   id: ID!
