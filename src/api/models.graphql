@@ -33,7 +33,9 @@ type Post {
   caption: String!
   price: String!
   period: Int!
+  period_string: String!
   category: Int!
+  category_string:String!
   user: User!
   files: [File!]!
   likes: [Like!]
