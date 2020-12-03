@@ -24,6 +24,7 @@ type User {
   postsCount: Int!
   likesCount: Int!
   likesPosts: [Like!]!
+  myReservation:[Reservation!]!
 }
 
 type Post {
@@ -33,6 +34,7 @@ type Post {
   caption: String!
   price: String!
   period: Int!
+  category:Int!
   user: User!
   files: [File!]!
   likes: [Like!]
@@ -87,8 +89,9 @@ type Like {
 type Reservation {
   id: ID!
   post: Post!
-  borrower: User!
+  borrower:User!
   startDate: String!
+  status:String!
   endDate: String!
   createdAt: String!
   updatedAt: String!
@@ -105,7 +108,7 @@ type Category {
   id: ID!
   createdAt: String!
   updatedAt: String!
-  isDeleted:Boolean!
+  isDeleted: Boolean!
 }
 type Complain {
   id: ID!
