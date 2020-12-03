@@ -1,10 +1,10 @@
-import { prisma } from "../../../../generated/prisma-client";
+import { prisma } from '../../../../generated/prisma-client';
 
 export default {
   Query: {
-    seeAllPost: async () => {
-      console.log("SEE ALL POST")
-      return await prisma.posts();
+    seeAllPost: async (_, __, { request, isAuthenticated }) => {
+      isAuthenticated(request);
+      return await prisma.posts({ orderBy: 'createdAt_DESC' });
     },
   },
 };
