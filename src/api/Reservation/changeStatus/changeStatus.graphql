@@ -1,0 +1,6 @@
+type Mutation {
+  changeStatus(
+      id:String!
+      status:String!
+  ): Reservation!
+}

@@ -24,6 +24,7 @@ type User {
   postsCount: Int!
   likesCount: Int!
   likesPosts: [Like!]!
+  myReservation:[Reservation!]!
 }
 
 type Post {
@@ -97,6 +98,7 @@ type Reservation {
   borrower: User!
   review: [Review!]!
   startDate: String!
+  status:String!
   endDate: String!
   createdAt: String!
   updatedAt: String!
